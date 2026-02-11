@@ -1,55 +1,94 @@
+باشه 👌 این یه **README انگلیسی آماده کپی‌پیست برای GitHub** ـه.
+بدون توضیح اضافه، مستقیم می‌تونی بذاری تو `README.md` 👇
 
+---
 
+```md
 # Tax Included Prices Job
 
-این پروژه یک ابزار محاسباتی برای اضافه کردن مالیات به لیستی از قیمت‌ها است. با استفاده از این ابزار، قیمت‌های اولیه از یک فایل متنی بارگذاری می‌شوند، مالیات به آن‌ها اضافه می‌شود و سپس نتایج نمایش داده می‌شوند. این ابزار به‌ویژه برای توسعه‌دهندگانی که می‌خواهند با پردازش فایل‌ها و عملیات ساده مالی کار کنند مناسب است.
+A simple Go tool for calculating prices with tax included.  
+This project reads prices from a text file, applies a tax rate, and displays the results.
 
-## ویژگی‌ها
-- **بارگذاری قیمت‌ها** از فایل متنی (`prices.txt`)
-- **محاسبه‌ی قیمت با احتساب مالیات** بر اساس نرخ مالیات تعیین‌شده
-- **چاپ نتایج** به صورت یک نقشه (Map) که قیمت اصلی را به قیمت همراه با مالیات نگاشت می‌کند
+It is useful for practicing file processing, package structure, and basic financial calculations in Go.
 
-## ساختار
+---
 
-### فایل‌ها و پکیج‌ها
-- `conversion`: شامل توابعی برای تبدیل داده‌ها مانند تبدیل رشته‌ها به اعداد اعشاری
-- `fileManager`: برای مدیریت فایل‌ها (به عنوان مثال ذخیره یا بازیابی داده‌ها)
-- `prices`: پکیج اصلی پروژه که عملیات بارگذاری و محاسبه قیمت‌ها را مدیریت می‌کند
+## Features
 
-### کلاس `TaxIncludedPricesJob`
-این کلاس شامل خصوصیات و متدهایی برای مدیریت عملیات زیر است:
-- `LoadData()`: بارگذاری قیمت‌ها از فایل و تبدیل آن‌ها به اعداد اعشاری
-- `Process()`: محاسبه‌ی قیمت همراه با مالیات و چاپ نتایج
+- Load prices from a text file (`prices.txt`)
+- Calculate prices with a defined tax rate
+- Print results as a map (original price → price with tax)
+- Modular project structure with separate packages
 
-## نصب و راه‌اندازی
+---
 
-1. این مخزن را کلون کنید:
-    ```bash
-    git clone https://github.com/username/repo-name.git
-    ```
+## Project Structure
 
-2. به دایرکتوری پروژه بروید:
-    ```bash
-    cd repo-name
-    ```
+```
 
-3. فایل `prices.txt` را با قیمت‌های مورد نظر خود به فرمت زیر آماده کنید:
-    ```
-    100.0
-    200.0
-    300.0
-    ```
+.
+├── conversion/      # Data conversion utilities (e.g. string to float)
+├── fileManager/     # File management (reading and writing data)
+├── prices/          # Core logic for price calculation
+├── prices.txt       # Input file with prices
+├── main.go          # Program entry point
+└── README.md
 
-4. پروژه را اجرا کنید:
-    ```bash
-    go run main.go
-    ```
+````
 
-## نحوه استفاده
+---
 
-برای استفاده از این ابزار، کلاس `TaxIncludedPricesJob` را با نرخ مالیات دلخواه خود بسازید و متد `Process()` را برای پردازش قیمت‌ها فراخوانی کنید.
+## Main Class
 
-### مثال
+### TaxIncludedPricesJob
+
+This class manages the main operations of the project.
+
+### Methods
+
+- `LoadData()`  
+  Loads prices from the file and converts them to floating-point numbers.
+
+- `Process()`  
+  Calculates tax-included prices and prints the results.
+
+---
+
+## Installation and Run
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/username/repo-name.git
+````
+
+### 2. Go to the project directory
+
+```bash
+cd repo-name
+```
+
+### 3. Prepare the `prices.txt` file
+
+Example:
+
+```
+100.0
+200.0
+300.0
+```
+
+### 4. Run the project
+
+```bash
+go run main.go
+```
+
+---
+
+## Usage
+
+You can define your own tax rate in `main.go`:
 
 ```go
 package main
@@ -60,8 +99,36 @@ import (
 )
 
 func main() {
-	taxRate := 0.15 // نرخ مالیات ۱۵ درصد
+	taxRate := 0.15 // 15% tax rate
 	job := prices.NewTaxIncludedPriceJob(fileManager, taxRate)
 	job.Process()
 }
+```
+
+---
+
+## Sample Output
+
+```
+Original Price: 100.0 -> Price with Tax: 115.0
+Original Price: 200.0 -> Price with Tax: 230.0
+Original Price: 300.0 -> Price with Tax: 345.0
+```
+
+---
+
+## Notes
+
+Possible improvements:
+
+* Save results to a file
+* Allow user input for tax rate
+* Better error handling
+* Add unit tests
+
+```
+
+---
+
+اگر بخوای، می‌تونم نسخه **خیلی حرفه‌ای‌تر** (مثل پروژه‌های واقعی GitHub) یا **مینیمال‌تر** هم برات بسازم 🔥
 ```
